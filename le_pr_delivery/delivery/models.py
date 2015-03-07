@@ -8,7 +8,7 @@ class Users(models.Model):
 	def __email__(self):
 		return self.Email
 	
-	def __votes_left(self):
+	def __votes_left__(self):
 		return self.Votes_Left
 
 
@@ -21,7 +21,7 @@ class Restaurants(models.Model):
 	Total_Rating = models.IntegerField()
 	Total_Count = models.IntegerField()
 
-	def __name__(self):
+	def __names__(self):
 		return self.Name
 
 	def __Link__(self):
