@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_auth',
     'delivery'
 )
 
@@ -47,6 +48,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_auth.middleware.SocialAuthExceptionMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'le_pr_delivery.urls'
@@ -84,3 +91,20 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR), 'static')
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.contrib.messages.context_processors.messages',
+    'social_auth.context_processors.social_auth_by_type_backends',
+)
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_ERROR_URL = '/login-error/'
+GOOGLE_OAUTH2_CLIENT_ID = ''
+GOOGLE_OAUTH2_CLIENT_SECRET = ''
+GOOGLE_WHITE_LISTED_DOMAINS = ['reflektion.com']
+SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
