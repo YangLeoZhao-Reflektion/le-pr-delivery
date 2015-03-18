@@ -1,13 +1,30 @@
 from django.db import models
 
 
+class CustomUserManager(models.Manager):
+	def create_user(self, username, email):
+		return self.model._default_manager.create(username=username)
+
+
+class CustomUser(models.Model):
+	username = models.CharField(max_length=128)
+	last_login = models.DateTimeField(blank=True, null=True)
+	objects = CustomUserManager()
+	def is_authenticated(self):
+		return True
+
+
 class Users(models.Model):
+	id = models.IntegerField(primary_key=True)
 	Email = models.EmailField()
 	Votes_Left = models.IntegerField()
-	
+
+	def __id__(self):
+		return self.id
+
 	def __email__(self):
 		return self.Email
-	
+
 	def __votes_left__(self):
 		return self.Votes_Left
 
