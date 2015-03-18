@@ -11,6 +11,7 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render_to_response
 from social_auth import __version__ as version
+from delivery.lib.user_functions import get_users_entry
 
 
 def index(request):
@@ -37,6 +38,7 @@ def home(request):
 @login_required
 def done(request):
 	"""Login complete view, displays user data"""
+	get_users_entry(request);
 	ctx = {
 		'version': version,
 		'last_login': request.session.get('social_auth_last_login_backend')

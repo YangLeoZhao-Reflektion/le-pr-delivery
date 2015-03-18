@@ -15,12 +15,16 @@ class CustomUser(models.Model):
 
 
 class Users(models.Model):
+	id = models.IntegerField(primary_key=True)
 	Email = models.EmailField()
 	Votes_Left = models.IntegerField()
-	
+
+	def __id__(self):
+		return self.id
+
 	def __email__(self):
 		return self.Email
-	
+
 	def __votes_left__(self):
 		return self.Votes_Left
 
