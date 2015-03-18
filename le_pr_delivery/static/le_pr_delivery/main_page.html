@@ -21,9 +21,11 @@
 
     })
       function init(){
-        for (i = 0; i < 5; i++) {
-          $("#top_picks").append('<li><a href=""><span class="tab">Message Center</span></a></li>');
-        }
+        $.get('/restaurant', function(data, status, response){
+          var array = data.split(",");
+          for (element in array){
+            $("#top_picks").append('<li><a href=""><span class="tab">'+ array[element] +'</span></a></li>');
+        }});
       }
 
     </script>
