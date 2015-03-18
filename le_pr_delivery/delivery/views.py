@@ -10,10 +10,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render_to_response
-<<<<<<< HEAD
-import json
 from models import Restaurants
-=======
 from social_auth import __version__ as version
 from delivery.lib.user_functions import get_users_entry
 
