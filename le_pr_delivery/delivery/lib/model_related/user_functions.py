@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
 from delivery.models import Users
 
 
