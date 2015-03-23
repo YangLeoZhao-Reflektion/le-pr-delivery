@@ -16,15 +16,25 @@
     <link rel="stylesheet" type="text/css" href="{% static 'le_pr_delivery/css/component.css' %}" />
     <script src="{% static 'le_pr_delivery/js/modernizr.custom.js' %}"></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script>$(document).ready(function(){
-        init();
-
-    })
-      function init(){
-        for (i = 0; i < 5; i++) {
-          $("#top_picks").append('<li><a href=""><span class="tab">Message Center</span></a></li>');
+    <script>
+        $(document).ready(function(){
+            init();
+            $('#search-restaurant').keyup(function(event){
+                $.ajax({
+                    url: "/search-restaurants/",
+                    type: "POST",
+                    data: {query: $("#search-restaurant").val()},
+                    success: function(restaurants) {
+                        console.log(restaurants);
+                    }
+                });
+            });
+        });
+        function init(){
+          for (i = 0; i < 5; i++) {
+            $("#top_picks").append('<li><a href=""><span class="tab">Message Center</span></a></li>');
+          }
         }
-      }
 
     </script>
   </head>
@@ -50,6 +60,7 @@
             </div><!-- /gn-scroller -->
           </nav>
         </li>
+            <input placeholder="Search" id = "search-restaurant" type="search" class="gn-search" style="width: 40%;">
         <li><a class="gn-icon gn-icon-cog" href="#">user</a></li>
       </ul>
         <ul id= "top_picks" class = "col-md-5" style="height: 200px; list-style: none; border: 1px solid black; padding: 0px; background: whitesmoke; position: inherit;">
