@@ -4,6 +4,10 @@ from . import views
 from delivery.views import *
 
 urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'le_pr_delivery.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+    url(r'^restaurant/$', restaurant),
 	url(r'^main_page/$', views.mainPage),
 	url(r'^$', home, name='home'),
 	url(r'^done/$', done, name='done'),

@@ -16,77 +16,77 @@ class CustomUser(models.Model):
 
 class Users(models.Model):
 	id = models.IntegerField(primary_key=True)
-	Email = models.EmailField()
-	Votes_Left = models.IntegerField()
+	email = models.EmailField()
+	votes_Left = models.IntegerField()
 
 	def __id__(self):
 		return self.id
 
 	def __email__(self):
-		return self.Email
+		return self.email
 
 	def __votes_left__(self):
-		return self.Votes_Left
+		return self.votes_Left
 
 
 class Restaurants(models.Model):
-	Name = models.TextField()
-	Link = models.TextField()
-	Yelp_Rating = models.IntegerField()
-	Category = models.TextField()
-	Last_Used = models.DateTimeField()
-	Total_Rating = models.IntegerField()
-	Total_Count = models.IntegerField()
+	name = models.TextField()
+	link = models.TextField()
+	yelp_Rating = models.IntegerField()
+	category = models.TextField()
+	last_Used = models.DateTimeField()
+	total_Rating = models.IntegerField()
+	total_Count = models.IntegerField()
 
 	def __names__(self):
-		return self.Name
+		return self.name
 
 	def __Link__(self):
-		return self.Link
+		return self.link
 
 	def __yelp_rating__(self):
-		return self.Yelp_Rating
+		return self.yelp_Rating
 
 	def __category__(self):
-		return self.Category
+		return self.category
 
 	def __last_used__(self):
-		return self.Last_Used
+		return self.last_Used
 
 	def __total_rating__(self):
-		return self.Total_Rating
+		return self.total_Rating
 
 	def __total_count__(self):
-		return self.Total_Count
+		return self.total_Count
 
 
 class RestaurantComments(models.Model):
-	Uid = models.ForeignKey('Users')
-	Rid = models.ForeignKey('Restaurants')
-	Comment = models.TextField()
+	uid = models.ForeignKey('Users')
+	rid = models.ForeignKey('Restaurants')
+	comment = models.TextField()
 
 	def __uid__(self):
-		return self.Uid
+		return self.uid
 
 	def __rid__(self):
-		return self.Rid
+		return self.rid
 
 	def __comment__(self):
-		return self.Comment
+		return self.comment
 
 
 class VotesTable(models.Model):
-	Uid = models.ForeignKey('Users')
-	Rid = models.ForeignKey('Restaurants')
-	Votes = models.TextField()
+	uid = models.ForeignKey('Users')
+	rid = models.ForeignKey('Restaurants')
+	votes = models.TextField()
 
 	def __uid__(self):
-		return self.Uid
+		return self.uid
 
 	def __rid__(self):
-		return self.Rid
+		return self.rid
 
 	def __votes__(self):
-		return self.Votes
+		return self.votes
 
 
